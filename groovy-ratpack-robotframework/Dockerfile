@@ -29,9 +29,17 @@ RUN pip install logilab-common==0.63.0
 RUN pip install --upgrade setuptools
 
 RUN cd ~/ && mkdir Repository
-RUN cd ~/Repository && git clone -b unicode --single-branch https://JiminHsieh@bitbucket.org/JiminHsieh/robotframework-httplibrary.git && git clone -b google-search --single-branch https://JiminHsieh@bitbucket.org/JiminHsieh/robotframework-test-plan.git
+RUN cd ~/Repository && git clone https://JiminHsieh@bitbucket.org/JiminHsieh/robotframework-httplibrary.git && git clone https://JiminHsieh@bitbucket.org/JiminHsieh/robotframework-test-plan.git
+
+RUN cd ~/Repository && git clone https://JiminHsieh@bitbucket.org/JiminHsieh/groovy-ratpack-api.git
 
 RUN cd ~/Repository/robotframework-httplibrary && python bootstrap.py
 RUN cd ~/Repository/robotframework-httplibrary && ./bin/buildout
+RUN cd ~/Repository/groovy-ratpack-api && ./gradlew build
 
-EXPOSE 9090
+RUN mkdir ~/TestCases
+
+WORKDIR /root/Repository/groovy-ratpack-api
+CMD ["./gradlew", "run"]
+
+#EXPOSE 9090:9090
