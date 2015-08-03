@@ -20,9 +20,9 @@ RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EEA14886
 RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections
 
 RUN apt-get update && apt-get upgrade
-RUN apt-get install -y apt-utils
-RUN apt-get install -y oracle-java8-installer python git 
-RUN apt-get install -y groovy gradle python-pip
+RUN apt-get install -y --no-install-recommends apt-utils
+RUN apt-get install -y --no-install-recommends oracle-java8-installer python git 
+RUN apt-get install -y --no-install-recommends groovy gradle python-pip
 
 RUN easy_install -U Distribute
 RUN pip install logilab-common==0.63.0 
