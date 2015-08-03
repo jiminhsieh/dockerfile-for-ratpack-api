@@ -40,6 +40,6 @@ RUN cd ~/Repository/groovy-ratpack-api && ./gradlew build
 RUN mkdir ~/TestCases
 
 WORKDIR /root/Repository/groovy-ratpack-api
-CMD ["./gradlew", "run"]
+CMD git pull && ./gradlew run
 
 #EXPOSE 9090:9090
