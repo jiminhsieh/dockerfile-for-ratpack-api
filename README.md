@@ -23,3 +23,11 @@ docker -i -t -p $outer_port:9090 $image_name
 docker start $CONTAINER_ID
 ```
 It will work for you.
+
+# API
+* http://$ip_address:$outer_port/
+* http://$ip_address:$outer_port/google-search/$search_word
+$search_word: if you have more than 1 word, each word should use "$20" to bridge.
+
+# Knowing Issue
+> Sometime groovy cannot find test case location, it will cause exception. I am still working on this issue.
